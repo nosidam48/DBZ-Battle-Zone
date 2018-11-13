@@ -1,0 +1,21 @@
+img {
+    height: 100px;
+    width: 100px;
+}
+
+
+.enemies {
+    clear: both;
+}
+
+.attack {
+    clear: both;
+}
+
+.defender {
+    clear: both;
+}
+
+/* p {
+    text-align: center;
+} */
