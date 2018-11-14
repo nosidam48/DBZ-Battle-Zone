@@ -2,10 +2,10 @@ $(document).ready(function () {
 
 var gohan = {
     name: "Gohan",
-    hp: 150,
-    attackPower: 10,
+    hp: 170,
+    attackPower: 15,
     counter: 15,
-    attackPowersub: 10,
+    attackPowersub: 15,
     hpstat: ".gohan-hp",
     nameCall: ".gohan",
     enemies: []
@@ -15,7 +15,7 @@ var trunks = {
     name: "Trunks",
     hp: 200,
     attackPower: 6,
-    counter: 20,
+    counter: 17,
     attackPowersub: 6,
     hpstat: ".trunks-hp",
     nameCall: ".trunks"
@@ -24,19 +24,19 @@ var trunks = {
 var cell = {
     name: "Perfect Cell",
     hp: 220,
-    attackPower: 12,
-    counter: 25,
-    attackPowersub: 12,
+    attackPower: 8,
+    counter: 22,
+    attackPowersub: 8,
     hpstat: ".cell-hp",
     nameCall: ".cell"
 };
 
 var frieza = {
     name: "Frieza",
-    hp: 175,
-    attackPower: 8,
+    hp: 180,
+    attackPower: 12,
     counter: 12,
-    attackPowersub: 8,
+    attackPowersub: 12,
     hpstat: ".frieza-hp",
     nameCall: ".frieza"
 };
@@ -84,7 +84,7 @@ $(".gohan").on("click", function() {
         $(".frieza").appendTo(".enemyRow");
         attacker = gohan;
         console.log(attacker);
-        $("h5").text("Select first defender");
+        $("h5").text("Select a defender");
     };
 
 });
@@ -110,7 +110,7 @@ $(".trunks").on("click", function() {
         $(".frieza").appendTo(".enemyRow")
         attacker = trunks;
         console.log(attacker);
-        $("h5").text("Select first defender");
+        $("h5").text("Select a defender");
     }
 
 });
@@ -136,7 +136,7 @@ $(".cell").on("click", function() {
         $(".frieza").appendTo(".enemyRow")
         attacker = cell;
         console.log(attacker);
-        $("h5").text("Select first defender");
+        $("h5").text("Select a defender");
     }
 });
 
@@ -161,7 +161,7 @@ $(".frieza").on("click", function() {
         $(".gohan").appendTo(".enemyRow")
         attacker = frieza;
         console.log(attacker);
-        $("h5").text("Select first defender");
+        $("h5").text("Select a defender");
     }
 });
 
@@ -178,7 +178,7 @@ $(".attack").on("click", function() {
             console.log(attacker.attackPower);
             $("h5").text(attacker.name + " attacked " + defender.name + " for " + attacker.attackPower + " damage. " + defender.name + " counterattacked " + attacker.name + " for " + defender.counter + " damage." );
             $(attacker.hpstat).text("HP: " + attacker.hp); 
-
+            
             $(defender.hpstat).text("HP: " + defender.hp);
         }
 
@@ -202,42 +202,43 @@ $(".attack").on("click", function() {
             attacker = "";
             defender = "";
             $(".pic").appendTo(".char-row");
-            gohan = {
+             gohan = {
                 name: "Gohan",
-                hp: 150,
-                attackPower: 10,
+                hp: 170,
+                attackPower: 15,
                 counter: 15,
-                attackPowersub: 10,
+                attackPowersub: 15,
                 hpstat: ".gohan-hp",
-                nameCall: ".gohan"
+                nameCall: ".gohan",
+                enemies: []
             };
             
-            trunks = {
+             trunks = {
                 name: "Trunks",
                 hp: 200,
                 attackPower: 6,
-                counter: 20,
+                counter: 17,
                 attackPowersub: 6,
                 hpstat: ".trunks-hp",
                 nameCall: ".trunks"
             };
             
-            cell = {
+             cell = {
                 name: "Perfect Cell",
                 hp: 220,
-                attackPower: 12,
-                counter: 25,
-                attackPowersub: 12,
+                attackPower: 8,
+                counter: 22,
+                attackPowersub: 8,
                 hpstat: ".cell-hp",
                 nameCall: ".cell"
             };
             
-            frieza = {
+             frieza = {
                 name: "Frieza",
-                hp: 175,
-                attackPower: 8,
+                hp: 180,
+                attackPower: 12,
                 counter: 12,
-                attackPowersub: 8,
+                attackPowersub: 12,
                 hpstat: ".frieza-hp",
                 nameCall: ".frieza"
             };
@@ -258,45 +259,46 @@ $(".attack").on("click", function() {
             $("h5").text(attacker.name + " has slain all enemies! You won the game!");
             defender = "";
             attacker = ""; 
-             gohan = {
-            name: "Gohan",
-            hp: 150,
-            attackPower: 10,
-            counter: 15,
-            attackPowersub: 10,
-            hpstat: ".gohan-hp",
-            nameCall: ".gohan"
-        };
-
-            trunks = {
-            name: "Trunks",
-            hp: 200,
-            attackPower: 6,
-            counter: 20,
-            attackPowersub: 6,
-            hpstat: ".trunks-hp",
-            nameCall: ".trunks"
-        };
-
-            cell = {
-            name: "Perfect Cell",
-            hp: 220,
-            attackPower: 12,
-            counter: 25,
-            attackPowersub: 12,
-            hpstat: ".cell-hp",
-            nameCall: ".cell"
-        };
-
-            frieza = {
-            name: "Frieza",
-            hp: 175,
-            attackPower: 8,
-            counter: 12,
-            attackPowersub: 8,
-            hpstat: ".frieza-hp",
-            nameCall: ".frieza"
-        };
+                 gohan = {
+                    name: "Gohan",
+                    hp: 170,
+                    attackPower: 15,
+                    counter: 15,
+                    attackPowersub: 15,
+                    hpstat: ".gohan-hp",
+                    nameCall: ".gohan",
+                    enemies: []
+                };
+                
+                 trunks = {
+                    name: "Trunks",
+                    hp: 200,
+                    attackPower: 6,
+                    counter: 17,
+                    attackPowersub: 6,
+                    hpstat: ".trunks-hp",
+                    nameCall: ".trunks"
+                };
+                
+                 cell = {
+                    name: "Perfect Cell",
+                    hp: 220,
+                    attackPower: 8,
+                    counter: 22,
+                    attackPowersub: 8,
+                    hpstat: ".cell-hp",
+                    nameCall: ".cell"
+                };
+                
+                 frieza = {
+                    name: "Frieza",
+                    hp: 180,
+                    attackPower: 12,
+                    counter: 12,
+                    attackPowersub: 12,
+                    hpstat: ".frieza-hp",
+                    nameCall: ".frieza"
+                };
 
         $(".frieza-hp").text("HP: " + frieza.hp);
             $(".cell-hp").text("HP: " + cell.hp);

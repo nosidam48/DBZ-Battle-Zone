@@ -4,18 +4,6 @@ img {
 }
 
 
-.enemies {
-    clear: both;
-}
-
-.attack {
-    clear: both;
-}
-
-.defender {
-    clear: both;
-}
-
 body {
     background-image: url("http://i.imgur.com/PHz9z6f.png");
     background-repeat: no-repeat;
@@ -34,16 +22,41 @@ h1 {
 h5 {
     color: black;
     background-color: white;
+    width: 95%;
+    margin-top: 10px;
 }
 
 .defend {
-    color: red;
+    color: darkred;
 } 
 
 .enemy {
-    color: yellow;
+    color: red;
 }
 
 .char {
-    color: gold;
+    color: darkgreen;
+}
+
+
+.progress {
+    width: 39%;    
+}
+
+.progress-bar {
+    width: 100%;
+    text-align: center;
+}
+
+.char-name {
+    background-color: lightcoral;
+    color: white;
+    width: 38.5%;
+    text-align: center;
+}
+
+button {
+    margin: 10px 0px 10px 100px;
+    background-color: black;
+    color: red;
 }
