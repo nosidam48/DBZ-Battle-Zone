@@ -1,6 +1,6 @@
 img {
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
 }
 
 
@@ -16,6 +16,34 @@ img {
     clear: both;
 }
 
-/* p {
+body {
+    background-image: url("http://i.imgur.com/PHz9z6f.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-bottom: 50px;
+}
+
+p {
+    margin: 0;
+}
+
+h1 {
     text-align: center;
-} */
+}
+
+h5 {
+    color: black;
+    background-color: white;
+}
+
+.defend {
+    color: red;
+} 
+
+.enemy {
+    color: yellow;
+}
+
+.char {
+    color: gold;
+}

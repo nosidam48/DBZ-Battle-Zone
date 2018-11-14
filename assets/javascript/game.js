@@ -7,7 +7,8 @@ var gohan = {
     counter: 15,
     attackPowersub: 10,
     hpstat: ".gohan-hp",
-    nameCall: ".gohan"
+    nameCall: ".gohan",
+    enemies: []
 };
 
 var trunks = {
@@ -45,9 +46,11 @@ $(".cell-hp").text("HP: " + cell.hp);
 $(".gohan-hp").text("HP: " + gohan.hp);
 $(".trunks-hp").text("HP: " + trunks.hp);
 
-var isAttacker = false;
+var initialize
 
-var isDefender = false;
+var isAttacker = "";
+
+var isDefender = "";
 
 var attacker = "";
 
@@ -61,13 +64,16 @@ $(".gohan").on("click", function() {
     if (isDefender) {
         return false;
     }
+    
+    
     //
-    else if (isAttacker) {
-        $(".gohan").appendTo(".defender");
+    else if (attacker && attacker.name !== gohan.name) {
         isDefender = true;
         defender = gohan;
+        $(".gohan").appendTo(".defender");
         console.log(defender);
         $(".defender").show();
+        $("h5").text("Prepare to fight");
     }
 
     
@@ -77,7 +83,8 @@ $(".gohan").on("click", function() {
         $(".trunks").appendTo(".enemyRow");
         $(".frieza").appendTo(".enemyRow");
         attacker = gohan;
-        console.log(attacker)
+        console.log(attacker);
+        $("h5").text("Select first defender");
     };
 
 });
@@ -87,21 +94,23 @@ $(".trunks").on("click", function() {
         return false;
     }
 
-    else if (isAttacker) {
-        $(".trunks").appendTo(".defender")
+    else if (attacker && attacker.name !== trunks.name) {
         isDefender = true;
         defender = trunks;
+        $(".trunks").appendTo(".defender")
         console.log(trunks);
         $(".defender").show();
+        $("h5").text("Prepare to fight");
     }
 
     else {
-        isAttacker = "true"
+        isAttacker = true
         $(".cell").appendTo(".enemyRow")
         $(".gohan").appendTo(".enemyRow")
         $(".frieza").appendTo(".enemyRow")
         attacker = trunks;
-        console.log(attacker)
+        console.log(attacker);
+        $("h5").text("Select first defender");
     }
 
 });
@@ -111,21 +120,23 @@ $(".cell").on("click", function() {
         return false;
     }
 
-    else if (isAttacker) {
-        $(".cell").appendTo(".defender")
+    else if (attacker && attacker.name !== cell.name) {
         isDefender = true;
         defender = cell;
+        $(".cell").appendTo(".defender")
         $(".defender").show();
         console.log(defender);
+        $("h5").text("Prepare to fight");
     }
 
     else {
-        isAttacker = "true"
+        isAttacker = true;
         $(".gohan").appendTo(".enemyRow")
         $(".trunks").appendTo(".enemyRow")
         $(".frieza").appendTo(".enemyRow")
         attacker = cell;
-        console.log(attacker)
+        console.log(attacker);
+        $("h5").text("Select first defender");
     }
 });
 
@@ -134,33 +145,31 @@ $(".frieza").on("click", function() {
         return false;
     }
 
-    else if (isAttacker) {
-        $(".frieza").appendTo(".defender")
+    else if (attacker && attacker.name !== frieza.name) {
         isDefender = true;
         defender = frieza;
+        $(".frieza").appendTo(".defender")
         $(".defender").show();
         console.log(defender);
+        $("h5").text("Prepare to fight");
     }
 
     else {
-        isAttacker = "true"
+        isAttacker = true;
         $(".cell").appendTo(".enemyRow")
         $(".trunks").appendTo(".enemyRow")
         $(".gohan").appendTo(".enemyRow")
         attacker = frieza;
-        console.log(attacker)
+        console.log(attacker);
+        $("h5").text("Select first defender");
     }
 });
 
 
 //Create a function for the click button that causes you character to attack and the defender to counter attack. Also have it add the attack stat together so that it grows as the attacks increase.
 $(".attack").on("click", function() {
-        if (isDefender = false) {
-            return false;
-        }
-
-
-        else {
+        if (isDefender && isAttacker) {
+            
             defender.hp -= attacker.attackPower;
             console.log(defender.hp)
             attacker.hp -= defender.counter;
@@ -169,7 +178,12 @@ $(".attack").on("click", function() {
             console.log(attacker.attackPower);
             $("h5").text(attacker.name + " attacked " + defender.name + " for " + attacker.attackPower + " damage. " + defender.name + " counterattacked " + attacker.name + " for " + defender.counter + " damage." );
             $(attacker.hpstat).text("HP: " + attacker.hp); 
+
             $(defender.hpstat).text("HP: " + defender.hp);
+        }
+
+        else {
+            return false;
         }
         
         //To bring in the next defender if the first is KO
@@ -182,9 +196,11 @@ $(".attack").on("click", function() {
 
         // to reset the game if the player loses
         if (attacker.hp <= 0) {
-            $("h5").text(defender.name + " has slain " + attacker.name + ". Better luck next time.")
+            $("h5").text(defender.name + " has slain " + attacker.name + ". Better luck next time.");
             isDefender = false;
             isAttacker = false;
+            attacker = "";
+            defender = "";
             $(".pic").appendTo(".char-row");
             gohan = {
                 name: "Gohan",
@@ -235,10 +251,13 @@ $(".attack").on("click", function() {
         }
 
         //to end the game if there are no remaining defenders
-        if (!$.trim( $('.enemyRow').html() ).length) {
+        if (!$.trim( $('.enemyRow').html() ).length && isDefender) {
             isDefender = false;
-            isAttacker = false; 
+            isAttacker = false;
             $(".pic").appendTo(".char-row");
+            $("h5").text(attacker.name + " has slain all enemies! You won the game!");
+            defender = "";
+            attacker = ""; 
              gohan = {
             name: "Gohan",
             hp: 150,
